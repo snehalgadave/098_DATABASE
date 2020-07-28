@@ -1,0 +1,45 @@
+exercise 6
+
+1. Display all the Suppliers with the same Status as the supplier, ‘CLARK’.
+
+->SELECT `S#`  FROM S
+	WHERE STATUS =
+	(SELECT STATUS FROM S
+	WHERE SNAME = 'CLARK');
+
+2. Display all the Employees in the same department as the employee ‘MILLER’.
+
+->SELECT EMPNAME FROM SEMP
+	WHERE DEPTNO =
+	(SELECT DEPTNO FROM SEMP
+	WHERE EMPNAME = 'MILLER');
+
+3. Display all the Parts which have more Weight than all the Red parts.
+
+->SELECT `P#` FROM P
+	WHERE WEIGHT > (SELECT WEIGHT FROM P WHERE COLOR = 'RED');
+
+4. Display all the Projects going on in the same city as the project ‘TAPE’.
+
+->SELECT `J#` FROM J
+	WHERE CITY =
+	(SELECT CITY FROM J
+	WHERE JNAME ='TAPE');
+
+5. Display all the Parts with Weight less than all the Green parts.
+
+->SELECT `P#` FROM P
+	WHERE WEIGHT < (SELECT WEIGHT FROM P WHERE COLOR = 'GREEN');
+
+6. Display the name of the Supplier who has sold the maximum Quantity (in one
+sale).
+
+->SELECT `S#` FROM SPJ
+	WHERE QTY = 
+	(SELECT MAX(QTY) FROM SPJ);
+
+7. Display the name of the Employee with the minimum Salary.
+
+->SELECT EMPNAME FROM SEMP
+	WHERE BASIC =
+	(SELECT MIN(BASIC) FROM SEMP);
